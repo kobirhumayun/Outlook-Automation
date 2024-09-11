@@ -171,7 +171,7 @@ Sub sendApprovedUp()
         
         .CC = "customs@pioneerdenim.com;customs2@pioneerdenim.com"
         
-        .Subject = "UP- (2024)" ' Email subject
+        .Subject = Application.Run("outlook_utility_functions.sendApprovedUpMailSubGenerate", attachedItems) ' Email subject
 
             For i = 1 To UBound(attachedItems, 1)
 
