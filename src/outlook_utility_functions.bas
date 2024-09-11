@@ -275,3 +275,17 @@ Private Function GetFileNamesFromPathArr(ByVal pathArr As Variant) As Variant
     GetFileNamesFromPathArr = fileNameDict.keys
 
 End Function
+
+Private Function extractAndFormatUpNoFromFileNameArr(ByVal upFileNameArr As Variant) As Variant
+
+    Dim i As Long
+
+    For i = LBound(upFileNameArr) To UBound(upFileNameArr)
+
+        upFileNameArr(i) = Replace(Replace(upFileNameArr(i), "UP-", ""), "-", "/")
+
+    Next i
+
+    extractAndFormatUpNoFromFileNameArr = upFileNameArr
+
+End Function
