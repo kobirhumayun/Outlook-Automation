@@ -289,3 +289,21 @@ Private Function extractAndFormatUpNoFromFileNameArr(ByVal upFileNameArr As Vari
     extractAndFormatUpNoFromFileNameArr = upFileNameArr
 
 End Function
+
+Private Function sendApprovedUpMailSubGenerate(ByVal pathArr As Variant) As Variant
+
+    Dim temp As Variant
+
+    temp = Application.Run("outlook_utility_functions.GetFileNamesFromPathArr", pathArr)
+
+    temp = Application.Run("outlook_utility_functions.extractAndFormatUpNoFromFileNameArr", temp)
+
+    temp = Application.Run("utilityFunction.upSequenceStrGenerator", temp, " - ", 44)
+
+    temp = Replace(temp, ",", ", ")
+
+    temp = "UP-" & temp
+
+    sendApprovedUpMailSubGenerate = temp
+
+End Function
