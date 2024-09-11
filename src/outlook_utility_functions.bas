@@ -253,3 +253,25 @@ Private Function returnSelectedFilesFullPathArr(ByVal initialPath As String) As 
     returnSelectedFilesFullPathArr = selectedFiles
 End Function
 
+Private Function GetFileNamesFromPathArr(ByVal pathArr As Variant) As Variant
+
+    Dim fso As Object
+    Set fso = CreateObject("Scripting.FileSystemObject")
+
+    Dim fileNameDict As Object
+    Set fileNameDict = CreateObject("Scripting.Dictionary")
+
+    Dim i As Long
+
+    For i = LBound(pathArr) To UBound(pathArr)
+
+        fileNameDict(fso.GetBaseName(pathArr(i))) = fso.GetBaseName(pathArr(i))
+
+    Next i
+
+    ' Clean up
+    Set fso = Nothing
+
+    GetFileNamesFromPathArr = fileNameDict.keys
+
+End Function
