@@ -104,38 +104,34 @@ Private Function PrintPDFDuplexUsingSumatraPDF(ByVal pdfFilePath As String)
     
 End Function
 
-
 Private Function printPdfUsingAdobeSdk(ByVal filePath As String)
-    Dim acroApp As acroApp
-    Dim avDoc As AcroAVDoc
-    Dim pdDoc As AcroPDDoc
+    Dim acroApp As Acrobat.CAcroApp
+    Dim avDoc As Acrobat.CAcroAVDoc
+    Dim pdDoc As Acrobat.CAcroPDDoc
 
-    Set acroApp = New acroApp
-    Set avDoc = New AcroAVDoc
-    Set pdDoc = New AcroPDDoc
+    Set acroApp = CreateObject("AcroExch.App")
+    Set avDoc = CreateObject("AcroExch.AVDoc")
+    ' No need to create a new PDDoc here; we'll get it from the AVDoc
 
-    Dim methodeReturn As Variant
-    '  Dim avDoc As Object
-    ' Set avDoc = CreateObject("AcroExch.AVDoc")
-    
-    methodeReturn = acroApp.Hide() ' this methode must call bfore call "Exit()" methode
+    acroApp.Hide  ' Hide the Acrobat application window
 
     If avDoc.Open(filePath, "") Then
-
-        Set pdDoc = avDoc.GetPDDoc()
-        methodeReturn = avDoc.PrintPagesSilent(0, pdDoc.GetNumPages - 1, 2, 0, 0)
-        
+        Set pdDoc = avDoc.GetPDDoc
+        avDoc.PrintPagesSilent 0, pdDoc.GetNumPages - 1, 2, 0, 0
+        ' Close the document without saving changes or prompting
+        avDoc.Close True
     End If
-    
-    methodeReturn = acroApp.CloseAllDocs() ' this methode must call bfore call "Exit()" methode
-    
-    methodeReturn = acroApp.Exit()
-    
-    Debug.Print "printing by acroApp"
-    ' methodeReturn = acroApp.Show() ' if this methode call "Exit()" methode not work
 
+    ' Exit the Acrobat application
+    acroApp.Exit
+
+    ' Release the objects
+    Set pdDoc = Nothing
+    Set avDoc = Nothing
+    Set acroApp = Nothing
+
+    Debug.Print "Printing by Acrobat SDK completed."
 End Function
-
 
 Private Function ExtractStringLeftOfComma(ByVal inputText As String) As Variant
 
