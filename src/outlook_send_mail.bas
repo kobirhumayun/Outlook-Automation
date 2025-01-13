@@ -147,7 +147,7 @@ Sub sendApprovedUp()
     Set wordDoc = OutMail.GetInspector.WordEditor
     
     Dim attachedItems As Variant
-    attachedItems = Application.Run("outlook_utility_functions.returnSelectedFilesFullPathArr", "G:\PDL Customs\Export LC, Import LC & UP\UP\UP 2024") ' all attachments path
+    attachedItems = Application.Run("outlook_utility_functions.returnSelectedFilesFullPathArr", "G:\PDL Customs\Export LC, Import LC & UP\UP\UP 2025") ' all attachments path
 
     ' Email details
     With wordDoc
