@@ -28,7 +28,7 @@ Sub sendUpIssuingStatus()
         .CC = "customs@pioneerdenim.com"
         .Subject = "UP Pending List" ' Email subject
         ' Add attachments
-        .Attachments.Add "G:\PDL Customs\Customs Audit 2024-2025\UP Issuing Status # 2024-2025\UP Issuing Status for the Period # 01-03-2024 to 28-02-2025.xlsx"
+        .Attachments.Add "G:\PDL Customs\Customs Audit 2025-2026\UP Issuing Status # 2025-2026\UP Issuing Status for the Period # 01-03-2025 to 28-02-2026.xlsx"
 
         ' Display or send the email
         .Display
