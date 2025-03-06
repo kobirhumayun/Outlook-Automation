@@ -41,6 +41,45 @@ Sub sendUpIssuingStatus()
     Set OutApp = Nothing
 End Sub
 
+Sub sendPiInfo()
+    Dim OutApp As Object
+    Dim OutMail As Object
+    Dim wordDoc As Object
+
+    ' Create Outlook application
+    Set OutApp = CreateObject("Outlook.Application")
+    Set OutMail = OutApp.CreateItem(0) ' 0 represents a new mail item
+
+    ' Create a Word document within the email
+    Set wordDoc = OutMail.GetInspector.WordEditor
+
+    ' Email details
+    With wordDoc
+
+        .Range(0, 2).Delete 'delete 2 unwanted line break
+        .Range(11, 11).InsertAfter Text:="Fyi..."
+
+    End With
+
+    ' Additional email details
+    With OutMail
+
+        .To = "customs2@pioneerdenim.com;rashid.harun54@gmail.com" ' Recipient email address
+        .Subject = "PI-Info" ' Email subject
+        ' Add attachments
+        .Attachments.Add "D:\Temp\UP Draft\Draft 2025\PIReport.xlsx"
+
+        ' Display or send the email
+        .Display
+
+    End With
+
+    ' Clean up
+    Set wordDoc = Nothing
+    Set OutMail = Nothing
+    Set OutApp = Nothing
+End Sub
+
 
 Sub sendDashboardStatus()
     Dim OutApp As Object
