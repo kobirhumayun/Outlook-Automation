@@ -67,7 +67,7 @@ Sub sendPiInfo()
         .To = "customs2@pioneerdenim.com;rashid.harun54@gmail.com" ' Recipient email address
         .Subject = "PI-Info" ' Email subject
         ' Add attachments
-        .Attachments.Add "D:\Temp\UP Draft\Draft 2025\PIReport.xlsx"
+        .Attachments.Add "D:\Temp\UP Draft\Draft 2026\PIReport.xlsx"
 
         ' Display or send the email
         .Display
@@ -186,7 +186,7 @@ Sub sendApprovedUp()
     Set wordDoc = OutMail.GetInspector.WordEditor
     
     Dim attachedItems As Variant
-    attachedItems = Application.Run("outlook_utility_functions.returnSelectedFilesFullPathArr", "G:\PDL Customs\Export LC, Import LC & UP\UP\UP 2025") ' all attachments path
+    attachedItems = Application.Run("outlook_utility_functions.returnSelectedFilesFullPathArr", "G:\PDL Customs\Export LC, Import LC & UP\UP\UP 2026") ' all attachments path
 
     ' Email details
     With wordDoc

@@ -42,8 +42,8 @@ Sub SaveOutlookAttachments()
     
     Dim previousYear, currentYear, year As Variant
     
-    previousYear = "2024" ' be changed if year changed
-    currentYear = "2025" ' be changed if year changed
+    previousYear = "2025" ' be changed if year changed
+    currentYear = "2026" ' be changed if year changed
         
     Dim buyerName, lcNo As Variant
     
